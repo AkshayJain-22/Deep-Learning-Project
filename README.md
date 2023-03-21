@@ -12,8 +12,4 @@
 8. Test Run your pipeline stage
 9. Run tox for testing your package
 10. Update the dvc.yaml
-<<<<<<< HEAD:Readme.md
 11. Write "dvc repro" command for running all stages in pipeline
-=======
-11. Write "dvc repro" command for running all stages in pipeline.
->>>>>>> 59fed89312e902a8f18fb8c5e56b6d87a5c2e063:README.md
