@@ -1,1 +1,8 @@
-key: value
+AUGMENTATION: True  #Tilt,color change, flip the image for creating bigger dataset
+IMAGE_SIZE: [224, 224, 3] #as per VGG16
+BATCH_SIZE: 16
+INCLUDE_TOP: True
+EPOCHS: 1
+CLASSES: 2
+WEIGHTS: imagenet   #weights trained from imagenet dataset
+LEARNING_RATE: 0.01
