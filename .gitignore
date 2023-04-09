@@ -135,3 +135,8 @@ dmypy.json
 *.jpg
 artifacts/prepare_base_model/base_model.h5
 artifacts/prepare_base_model/updated_base_model.h5
+.DS_Store
+artifacts/prepare_callback/checkpoint_dir/model.h5
+artifacts/training/model.h5
+artifacts/prepare_callback/tensorboard_log_dir/tb_logs_at_2023-04-08-19-38-23/validation/events.out.tfevents.1680986300.Akshays-MacBook-Air.local.30322.1.v2
+artifacts/prepare_callback/tensorboard_log_dir/tb_logs_at_2023-04-08-19-38-23/train/events.out.tfevents.1680962914.Akshays-MacBook-Air.local.30322.0.v2
