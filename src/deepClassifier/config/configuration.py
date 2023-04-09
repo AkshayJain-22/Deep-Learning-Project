@@ -1,7 +1,8 @@
 from deepClassifier.constants import *
 from deepClassifier.utils import read_yaml, create_directories
-from deepClassifier.entity import DataIngestionConfig, PrepareBaseModelConfig
+from deepClassifier.entity import DataIngestionConfig, PrepareBaseModelConfig, PrepareCallbackConfig, TrainingConfig
 from pathlib import Path
+import os
 
 class ConfigurationManager:
     def __init__(
@@ -41,3 +42,34 @@ class ConfigurationManager:
         )
 
         return prepare_base_model_config
+    
+    def get_prepare_callback_config(self) -> PrepareCallbackConfig:
+        config = self.config.prepare_callback
+        model_ckpt_dir= os.path.dirname(config.checkpoint_model_filepath)   #since it has a filename in the end of filepath
+        create_directories([Path(model_ckpt_dir),Path(config.tensorboard_log_dir)])
+
+        prepare_callback_config = PrepareCallbackConfig(
+            root_dir = Path(config.root_dir),
+            tensorboard_log_dir = Path(config.tensorboard_log_dir),
+            checkpoint_model_filepath = Path(config.checkpoint_model_filepath))
+
+        return prepare_callback_config
+
+    def get_training_config(self) -> TrainingConfig:
+        config_training = self.config.training
+        model_config = self.config.prepare_base_model
+        training_data = os.path.join(self.config.data_ingestion.unzip_dir,"PetImages")
+        params = self.params
+
+        create_directories([Path(config_training.root_dir)])
+
+        training_config = TrainingConfig(
+            root_dir = Path(config_training.root_dir),
+            trained_model_path= Path(config_training.trained_model_path),
+            updated_base_model_path= Path(model_config.updated_base_model_path),
+            training_data= training_data,
+            params_epochs = params.EPOCHS,
+            params_batch_size = params.BATCH_SIZE,
+            params_is_augmentation= params.AUGMENTATION,
+            params_image_size= params.IMAGE_SIZE)
+        return training_config
