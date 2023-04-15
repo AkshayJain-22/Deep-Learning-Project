@@ -45,4 +45,4 @@ class Evaluation:
         scores = {"loss":self.score[0],
                   "accuracy":self.score[1] 
                  }
-        save_json(path = Path("scores.json"),data=self.score)
+        save_json(path = Path("scores.json"),data=self.scores)
