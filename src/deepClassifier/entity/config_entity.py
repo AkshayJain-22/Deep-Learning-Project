@@ -38,3 +38,10 @@ class TrainingConfig:      #this will also work as a named tuple but is a better
     params_batch_size: int
     params_is_augmentation: bool
     params_image_size: list
+
+@dataclass(frozen=True)
+class EvaluationConfig:
+    path_of_model:Path
+    training_data:Path
+    params_image_size: list
+    params_batch_size: int
